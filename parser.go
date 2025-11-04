@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mitchellh/mapstructure"
+	"github.com/go-viper/mapstructure/v2"
 
 	bf "github.com/krakend/bloomfilter/v2/krakend"
 	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
