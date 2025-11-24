@@ -676,6 +676,17 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 				f = addBit(f, 2)
 			}
 			components[c] = []int{f}
+		case "auth/revoker":
+			cfg, ok := v.(map[string]interface{})
+			if !ok {
+				components[c] = []int{}
+				continue
+			}
+			f := 0
+			if s, ok := cfg["revoke_server_ping_url"].(string); ok && s != "" {
+				f = addBit(f, 0)
+			}
+			components[c] = []int{f}
 		case "ai/mcp":
 			cfg, ok := v.(map[string]interface{})
 			if !ok {

@@ -5,6 +5,14 @@
   "echo_endpoint": true,
   "use_h2c": true,
   "extra_config": {
+    "auth/revoker": {
+      "N": 10000000,
+      "P": 0.0000001,
+      "hash_name": "optimal",
+      "TTL": 1500,
+      "port": 1234,
+      "token_keys": ["jti"]
+    },
     "modifier/response-headers": {
       "add": {
         "X-Hello": [

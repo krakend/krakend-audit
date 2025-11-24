@@ -384,6 +384,9 @@ func ExampleParse() {
 	//       3
 	//     ],
 	//     "auth/api-keys": [],
+	//     "auth/revoker": [
+	//       0
+	//     ],
 	//     "github.com/devopsfaith/krakend-lua/router": [
 	//       1
 	//     ],
@@ -405,6 +408,53 @@ func ExampleParse() {
 	//       100,
 	//       1,
 	//       2,
+	//       1
+	//     ]
+	//   }
+	// }
+}
+
+func ExampleParse_withRevokerServer() {
+	cfg, err := config.NewParser().Parse("./tests/revoker.json")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	cfg.Normalize()
+
+	result := Parse(&cfg)
+	r, _ := json.MarshalIndent(result, "", "  ")
+	fmt.Println(string(r))
+
+	// output:
+	// {
+	//   "d": [
+	//     0
+	//   ],
+	//   "a": null,
+	//   "e": [
+	//     {
+	//       "d": [
+	//         2,
+	//         0,
+	//         0,
+	//         2000,
+	//         0,
+	//         0
+	//       ],
+	//       "b": [
+	//         {
+	//           "d": [
+	//             64
+	//           ],
+	//           "c": {}
+	//         }
+	//       ],
+	//       "c": {}
+	//     }
+	//   ],
+	//   "c": {
+	//     "auth/revoker": [
 	//       1
 	//     ]
 	//   }
