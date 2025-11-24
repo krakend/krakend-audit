@@ -3,7 +3,7 @@
   "version": 3,
   "host": ["http://localhost:8080"],
   "extra_config": {
-    "auth/revoker": {
+    "github_com/devopsfaith/bloomfilter": {
       "hash_name": "optimal",
       "N": 10000000,
       "P": 1e-7,

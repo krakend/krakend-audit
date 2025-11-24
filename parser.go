@@ -304,12 +304,15 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 				continue
 			}
 
-			res := make([]int, 2)
+			res := make([]int, 3)
 			if hn, ok := cfg["hash_name"].(string); ok && hn == "optimal" {
 				res[0] = 1
 			}
 			if ks, ok := cfg["token_keys"].([]interface{}); ok {
 				res[1] = len(ks)
+			}
+			if s, ok := cfg["revoke_server_ping_url"].(string); ok && s != "" {
+				res[2] = 1
 			}
 			components[c] = res
 
@@ -674,17 +677,6 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 			}
 			if m, ok := cfg["max_size"].(float64); ok && m > 0 {
 				f = addBit(f, 2)
-			}
-			components[c] = []int{f}
-		case "auth/revoker":
-			cfg, ok := v.(map[string]interface{})
-			if !ok {
-				components[c] = []int{}
-				continue
-			}
-			f := 0
-			if s, ok := cfg["revoke_server_ping_url"].(string); ok && s != "" {
-				f = addBit(f, 0)
 			}
 			components[c] = []int{f}
 		case "ai/mcp":

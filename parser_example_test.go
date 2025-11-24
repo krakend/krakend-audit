@@ -384,11 +384,13 @@ func ExampleParse() {
 	//       3
 	//     ],
 	//     "auth/api-keys": [],
-	//     "auth/revoker": [
-	//       0
-	//     ],
 	//     "github.com/devopsfaith/krakend-lua/router": [
 	//       1
+	//     ],
+	//     "github_com/devopsfaith/bloomfilter": [
+	//       1,
+	//       2,
+	//       0
 	//     ],
 	//     "github_com/devopsfaith/krakend/transport/http/server/handler": [
 	//       4
@@ -454,7 +456,9 @@ func ExampleParse_withRevokerServer() {
 	//     }
 	//   ],
 	//   "c": {
-	//     "auth/revoker": [
+	//     "github_com/devopsfaith/bloomfilter": [
+	//       1,
+	//       1,
 	//       1
 	//     ]
 	//   }

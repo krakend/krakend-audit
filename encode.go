@@ -97,7 +97,6 @@ var componentAlias = map[string]string{
 	httpcache.Namespace:                "10",
 	"ai/llm":                           "11",
 	"ai/mcp":                           "12",
-	"auth/revoker":                     "13",
 }
 
 func applyAlias(s Service) Service {
