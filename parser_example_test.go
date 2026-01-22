@@ -387,6 +387,11 @@ func ExampleParse() {
 	//     "github.com/devopsfaith/krakend-lua/router": [
 	//       1
 	//     ],
+	//     "github_com/devopsfaith/bloomfilter": [
+	//       1,
+	//       2,
+	//       0
+	//     ],
 	//     "github_com/devopsfaith/krakend/transport/http/server/handler": [
 	//       4
 	//     ],
@@ -405,6 +410,55 @@ func ExampleParse() {
 	//       100,
 	//       1,
 	//       2,
+	//       1
+	//     ]
+	//   }
+	// }
+}
+
+func ExampleParse_withRevokerServer() {
+	cfg, err := config.NewParser().Parse("./tests/revoker.json")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	cfg.Normalize()
+
+	result := Parse(&cfg)
+	r, _ := json.MarshalIndent(result, "", "  ")
+	fmt.Println(string(r))
+
+	// output:
+	// {
+	//   "d": [
+	//     0
+	//   ],
+	//   "a": null,
+	//   "e": [
+	//     {
+	//       "d": [
+	//         2,
+	//         0,
+	//         0,
+	//         2000,
+	//         0,
+	//         0
+	//       ],
+	//       "b": [
+	//         {
+	//           "d": [
+	//             64
+	//           ],
+	//           "c": {}
+	//         }
+	//       ],
+	//       "c": {}
+	//     }
+	//   ],
+	//   "c": {
+	//     "github_com/devopsfaith/bloomfilter": [
+	//       1,
+	//       1,
 	//       1
 	//     ]
 	//   }
