@@ -5,6 +5,7 @@ go 1.24.0
 toolchain go1.24.2
 
 require (
+	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/krakend/bloomfilter/v2 v2.1.0
 	github.com/krakend/krakend-botdetector/v2 v2.3.0
 	github.com/krakend/krakend-circuitbreaker/v2 v2.1.0
@@ -22,7 +23,6 @@ require (
 	github.com/krakend/krakend-rss/v2 v2.1.1
 	github.com/krakend/krakend-xml/v2 v2.2.0
 	github.com/luraproject/lura/v2 v2.11.0
-	github.com/mitchellh/mapstructure v1.5.0
 )
 
 require (
@@ -110,6 +110,7 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
+	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mmcdole/gofeed v1.2.1 // indirect
 	github.com/mmcdole/goxpp v1.1.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
