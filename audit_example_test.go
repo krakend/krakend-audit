@@ -14,7 +14,7 @@ func ExampleAudit() {
 	}
 	cfg.Normalize()
 
-	exclude := []string{"1.1.1", "1.1.2"}
+	exclude := []string{"1.1.1", "1.1.2", "7.2.4"}
 	levels := []string{SeverityCritical, SeverityHigh, SeverityMedium}
 
 	result, err := Audit(&cfg, exclude, levels)
@@ -49,5 +49,4 @@ func ExampleAudit() {
 	// 18: 7.1.3 HIGH  	Avoid using deprecated plugin basic-auth. Please move your configuration to the namespace auth/basic to use the new component. See: https://www.krakend.io/docs/enterprise/authentication/basic-authentication/ .
 	// 19: 7.1.7 HIGH  	Avoid using deprecated plugin no-redirect. Please visit https://www.krakend.io/docs/enterprise/backends/client-redirect/#migration-from-old-plugin to upgrade to the new options.
 	// 20: 7.3.1 MEDIUM  	Avoid using 'private_key' and 'public_key' and use the 'keys' array.
-
 }
