@@ -41,6 +41,7 @@ func TestAudit_all(t *testing.T) {
 			// "5.2.2", -- we added multiple backends to the test to check for multiple unsafe methods
 			"7.1.3", // deprecated server plugin basic auth
 			"7.1.7", // deprecated client plugin no-redirect
+			"7.2.4", // deprecated influx
 			"7.3.1", // deprecated TLS private_key and public_key
 		},
 		levels: []string{SeverityCritical, SeverityHigh, SeverityMedium, SeverityLow},
@@ -83,7 +84,7 @@ func TestAudit_exclude(t *testing.T) {
 			"7.1.7", // deprecated client plugin no-redirect
 			"7.3.1", // deprecated TLS private_key and public_key
 		},
-		exclude: []string{"1.1.1", "1.1.2"},
+		exclude: []string{"1.1.1", "1.1.2", "7.2.4"},
 		levels:  []string{SeverityCritical, SeverityHigh, SeverityMedium, SeverityLow},
 	}
 	testAudit(t, tc)
