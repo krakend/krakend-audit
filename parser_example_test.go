@@ -395,6 +395,7 @@ func ExampleParse() {
 	//     "github_com/devopsfaith/krakend/transport/http/server/handler": [
 	//       4
 	//     ],
+	//     "github_com/letgoapp/krakend-influx": [],
 	//     "github_com/luraproject/lura/router/gin": [
 	//       262144
 	//     ],

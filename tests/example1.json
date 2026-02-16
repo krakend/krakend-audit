@@ -5,6 +5,14 @@
   "echo_endpoint": true,
   "use_h2c": true,
   "extra_config": {
+    "github_com/letgoapp/krakend-influx":{
+      "address":"http://influxdb:8086",
+      "ttl":"25s",
+      "buffer_size":0,
+      "db": "krakend",
+      "username": "your-influxdb-user",
+      "password": "your-influxdb-password"
+    },
     "github_com/devopsfaith/bloomfilter": {
       "N": 10000000,
       "P": 0.0000001,

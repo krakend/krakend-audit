@@ -8,6 +8,7 @@ import (
 	gologging "github.com/krakend/krakend-gologging/v2"
 	httpcache "github.com/krakend/krakend-httpcache/v2"
 	httpsecure "github.com/krakend/krakend-httpsecure/v2"
+	influx "github.com/krakend/krakend-influx/v2"
 	jose "github.com/krakend/krakend-jose/v2"
 	logstash "github.com/krakend/krakend-logstash/v2"
 	metrics "github.com/krakend/krakend-metrics/v2"
@@ -359,6 +360,11 @@ func hasDeprecatedGanalytics(s *Service) bool {
 
 func hasDeprecatedOpenCensus(s *Service) bool {
 	_, ok := s.Components[opencensus.Namespace]
+	return ok
+}
+
+func hasDeprecatedInflux(s *Service) bool {
+	_, ok := s.Components[influx.Namespace]
 	return ok
 }
 
