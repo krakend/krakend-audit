@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	cb "github.com/krakend/krakend-circuitbreaker/v2/gobreaker"
+	cb "github.com/krakend/krakend-circuitbreaker/v3/gobreaker"
 	cors "github.com/krakend/krakend-cors/v2"
 	gelf "github.com/krakend/krakend-gelf/v2"
 	gologging "github.com/krakend/krakend-gologging/v2"

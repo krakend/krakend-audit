@@ -222,8 +222,8 @@ github.com/krakend/httpcache v1.1.0 h1:3b/xm8VDxp9ydnN+FyuIxq+hx1ASZ2i5ytzvHJ20R
 github.com/krakend/httpcache v1.1.0/go.mod h1:JrPHdkcpz5IEq2HtDUE7Yjlg9Awq2zNgNn2XNEqSdCc=
 github.com/krakend/krakend-botdetector/v2 v2.3.0 h1:1/Mw+3gVbG3oylRihihxrs3y1ddVaB3q+s24Ig5rOgU=
 github.com/krakend/krakend-botdetector/v2 v2.3.0/go.mod h1:SpkwvuHnnNR8OPl04S+fRahyth2VWPZJHJb4dPt80sk=
-github.com/krakend/krakend-circuitbreaker/v2 v2.1.0 h1:jPUKJ+HXFa39U/xxgALJ66pyf0m1Nd1BRvkiDVXzeQw=
-github.com/krakend/krakend-circuitbreaker/v2 v2.1.0/go.mod h1:LWM3ASoAb1vyRYaFTdnh6WuMSBKkARe8vWpQ88hYGUA=
+github.com/krakend/krakend-circuitbreaker/v3 v3.0.0 h1:fUnHI1+47/MMF5aAkbEQ5iD7VZy7HvCEDFp0fF8vGVs=
+github.com/krakend/krakend-circuitbreaker/v3 v3.0.0/go.mod h1:Fg7/0jmY+rAWPCg3XcWlKy77lhjNJgkRBipnvGJAVcQ=
 github.com/krakend/krakend-cors/v2 v2.2.0 h1:Gq0ZcP4zliSc7mVh+2N/ePwboPyUGe9VQX7r5ZMo8o8=
 github.com/krakend/krakend-cors/v2 v2.2.0/go.mod h1:rtp7w2Xkn7JDXk9M7wv2Y0/iJfvWCz3CQpBN1yKzPLE=
 github.com/krakend/krakend-gelf/v2 v2.1.0 h1:0cWx06KdwxuhV5hac7+FAA+LMTjvxey/jM1PYIuPij8=
@@ -294,8 +294,8 @@ github.com/rogpeppe/go-internal v1.13.1 h1:KvO1DLK/DRN07sQ1LQKScxyZJuNnedQ5/wKSR
 github.com/rogpeppe/go-internal v1.13.1/go.mod h1:uMEvuHeurkdAXX61udpOXGD/AzZDWNMNyH2VO9fmH0o=
 github.com/ryanuber/go-glob v1.0.0 h1:iQh3xXAumdQ+4Ufa5b25cRpC5TYKlno6hsv6Cb3pkBk=
 github.com/ryanuber/go-glob v1.0.0/go.mod h1:807d1WSdnB0XRJzKNil9Om6lcp/3a0v4qIHxIXzX/Yc=
-github.com/sony/gobreaker v0.5.0 h1:dRCvqm0P490vZPmy7ppEk2qCnCieBooFJ+YoXGYB+yg=
-github.com/sony/gobreaker v0.5.0/go.mod h1:ZKptC7FHNvhBz7dN2LGjPVBz2sZJmc0/PkyDJOjmxWY=
+github.com/sony/gobreaker/v2 v2.4.0 h1:g2KJRW1Ubty3+ZOcSEUN7K+REQJdN6yo6XvaML+jptg=
+github.com/sony/gobreaker/v2 v2.4.0/go.mod h1:pTyFJgcZ3h2tdQVLZZruK2C0eoFL1fb/G83wK1ZQl+s=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=
