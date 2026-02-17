@@ -8,7 +8,7 @@ require (
 	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/krakend/bloomfilter/v2 v2.1.0
 	github.com/krakend/krakend-botdetector/v2 v2.3.0
-	github.com/krakend/krakend-circuitbreaker/v2 v2.1.0
+	github.com/krakend/krakend-circuitbreaker/v3 v3.0.0
 	github.com/krakend/krakend-cors/v2 v2.2.0
 	github.com/krakend/krakend-gelf/v2 v2.1.0
 	github.com/krakend/krakend-gologging/v2 v2.1.1
@@ -123,7 +123,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
-	github.com/sony/gobreaker v0.5.0 // indirect
+	github.com/sony/gobreaker/v2 v2.4.0 // indirect
 	github.com/tmthrgd/atomics v0.0.0-20190904060638-dc7a5fcc7e0d // indirect
 	github.com/tmthrgd/go-bitset v0.0.0-20190904054048-394d9a556c05 // indirect
 	github.com/tmthrgd/go-bitwise v0.0.0-20190904053232-1430ee983fca // indirect
