@@ -9,7 +9,6 @@ import (
 
 	bf "github.com/krakend/bloomfilter/v2/krakend"
 	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
 	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
 	"github.com/luraproject/lura/v2/config"
 	"github.com/luraproject/lura/v2/proxy"
@@ -55,7 +54,6 @@ func generateCfg() *config.ServiceConfig {
 			router.Namespace:      map[string]interface{}{},
 			bf.Namespace:          map[string]interface{}{},
 			botdetector.Namespace: map[string]interface{}{},
-			opencensus.Namespace:  map[string]interface{}{},
 			ratelimit.Namespace:   map[string]interface{}{},
 		},
 		AsyncAgents: []*config.AsyncAgent{

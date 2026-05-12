@@ -16,7 +16,6 @@ import (
 	logstash "github.com/krakend/krakend-logstash/v2"
 	luaproxy "github.com/krakend/krakend-lua/v2/proxy"
 	luarouter "github.com/krakend/krakend-lua/v2/router"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
 	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
 	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
 	"github.com/luraproject/lura/v2/proxy"
@@ -65,7 +64,6 @@ var componentAlias = map[string]string{
 	router.Namespace:                   "e",
 	bf.Namespace:                       "f",
 	botdetector.Namespace:              "g",
-	opencensus.Namespace:               "h",
 	ratelimit.Namespace:                "i",
 	ratelimitProxy.Namespace:           "j",
 	"telemetry/newrelic":               "k",
