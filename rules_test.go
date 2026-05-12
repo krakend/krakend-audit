@@ -158,6 +158,16 @@ func Test_hasNoCB(t *testing.T) {
 	}
 }
 
+func Test_hasNoHttpCB(t *testing.T) {
+	if hasNoCB(&Service{Endpoints: []Endpoint{{Backends: []Backend{{Components: Component{"qos/circuit-breaker/http": []int{1 << 17}}}}}}}) {
+		t.Error("false positive")
+	}
+
+	if !hasNoCB(&Service{Components: Component{}}) {
+		t.Error("false negative")
+	}
+}
+
 func Test_hasTimeoutBiggerThan(t *testing.T) {
 	if hasTimeoutBiggerThan(1000)(&Service{Endpoints: []Endpoint{{Details: []int{0, 0, 0, 100}}}}) {
 		t.Error("false positive")
