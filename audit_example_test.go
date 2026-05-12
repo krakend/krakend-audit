@@ -50,3 +50,36 @@ func ExampleAudit() {
 	// 19: 7.1.7 HIGH  	Avoid using deprecated plugin no-redirect. Please visit https://www.krakend.io/docs/enterprise/backends/client-redirect/#migration-from-old-plugin to upgrade to the new options.
 	// 20: 7.3.1 MEDIUM  	Avoid using 'private_key' and 'public_key' and use the 'keys' array.
 }
+
+func ExampleAudit_cb() {
+	cfg, err := config.NewParser().Parse("./tests/example-cb.json")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	cfg.Normalize()
+
+	exclude := []string{"1.1.1", "1.1.2", "7.2.4"}
+	levels := []string{SeverityCritical, SeverityHigh, SeverityMedium}
+
+	result, err := Audit(&cfg, exclude, levels)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for i, r := range result.Recommendations {
+		fmt.Printf("%02d: %s %s  \t%s\n", i, r.Rule, r.Severity, r.Message)
+	}
+
+	// output:
+	// 00: 1.2.1 HIGH  	Prioritize using JWT for endpoint authorization to ensure security.
+	// 01: 2.1.2 HIGH  	Enable TLS or use a terminator in front of KrakenD.
+	// 02: 2.1.7 HIGH  	Enable HTTP security header checks (security/http).
+	// 03: 2.2.1 MEDIUM  	Hide the version banner in runtime.
+	// 04: 2.2.2 HIGH  	Enable CORS.
+	// 05: 3.1.2 HIGH  	Implement a rate-limiting strategy and avoid having an All-You-Can-Eat API.
+	// 06: 4.1.1 MEDIUM  	Implement a telemetry system for collecting metrics for monitoring and troubleshooting.
+	// 07: 4.2.1 MEDIUM  	Implement a telemetry system for tracing for monitoring and troubleshooting.
+	// 08: 4.3.1 MEDIUM  	Use the improved logging component for better log parsing.
+}

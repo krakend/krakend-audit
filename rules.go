@@ -277,7 +277,8 @@ func hasNoCB(s *Service) bool {
 		}
 		for _, b := range e.Backends {
 			_, ok := b.Components[cb.Namespace]
-			if ok {
+			_, okHttp := b.Components["qos/circuit-breaker/http"]
+			if ok || okHttp {
 				return false
 			}
 		}
