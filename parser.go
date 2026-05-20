@@ -358,9 +358,6 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 			if _, ok := exp["jaeger"]; ok {
 				v1 += 4
 			}
-			if _, ok := exp["influxdb"]; ok {
-				v1 += 8
-			}
 			if _, ok := exp["prometheus"]; ok {
 				v1 += 16
 			}
