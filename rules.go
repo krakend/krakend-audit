@@ -11,7 +11,6 @@ import (
 	jose "github.com/krakend/krakend-jose/v2"
 	logstash "github.com/krakend/krakend-logstash/v2"
 	metrics "github.com/krakend/krakend-metrics/v2"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
 	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
 	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
 	"github.com/luraproject/lura/v2/proxy"
@@ -298,7 +297,6 @@ func hasTimeoutBiggerThan(d int) func(*Service) bool {
 
 func hasNoMetrics(s *Service) bool {
 	for _, k := range []string{
-		opencensus.Namespace,
 		metrics.Namespace,
 		"telemetry/newrelic",
 		"telemetry/ganalytics",
@@ -314,7 +312,6 @@ func hasNoMetrics(s *Service) bool {
 func hasSeveralTelemetryComponents(s *Service) bool {
 	tot := 0
 	for _, k := range []string{
-		opencensus.Namespace,
 		metrics.Namespace,
 		"telemetry/newrelic",
 		"telemetry/ganalytics",
@@ -334,7 +331,8 @@ func hasSeveralTelemetryComponents(s *Service) bool {
 }
 
 func hasNoTracing(s *Service) bool {
-	_, ok1 := s.Components[opencensus.Namespace]
+	// this replaces old check for opencensus
+	ok1 := false
 	_, ok2 := s.Components["telemetry/newrelic"]
 	_, ok3 := s.Components["telemetry/instana"]
 
@@ -355,11 +353,6 @@ func hasDeprecatedInstana(s *Service) bool {
 
 func hasDeprecatedGanalytics(s *Service) bool {
 	_, ok := s.Components["telemetry/ganalytics"]
-	return ok
-}
-
-func hasDeprecatedOpenCensus(s *Service) bool {
-	_, ok := s.Components[opencensus.Namespace]
 	return ok
 }
 

@@ -16,7 +16,6 @@ require (
 	github.com/krakend/krakend-logstash/v2 v2.1.0
 	github.com/krakend/krakend-lua/v2 v2.9.0
 	github.com/krakend/krakend-metrics/v2 v2.1.0
-	github.com/krakend/krakend-opencensus/v2 v2.2.0
 	github.com/krakend/krakend-ratelimit/v3 v3.3.0
 	github.com/krakend/krakend-rss/v2 v2.1.1
 	github.com/krakend/krakend-xml/v2 v2.2.0
@@ -78,7 +77,6 @@ require (
 	github.com/go-playground/validator/v10 v10.23.0 // indirect
 	github.com/goccy/go-json v0.10.4 // indirect
 	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
-	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/google/wire v0.7.0 // indirect
@@ -131,7 +129,6 @@ require (
 	github.com/unrolled/secure v1.15.0 // indirect
 	github.com/valyala/fastrand v1.1.0 // indirect
 	github.com/yuin/gopher-lua v1.1.1 // indirect
-	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.63.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.63.0 // indirect
