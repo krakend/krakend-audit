@@ -158,7 +158,6 @@ var ruleSet = []Rule{
 	// 7.2 Component Deprecations
 	NewRule("7.2.1", SeverityHigh, "Avoid using deprecated component telemetry/ganalytics. Please visit https://www.krakend.io/docs/telemetry/opentelemetry/ to upgrade to OpenTelemetry", hasDeprecatedGanalytics),
 	NewRule("7.2.2", SeverityHigh, "Avoid using deprecated component telemetry/instana. Please visit https://www.krakend.io/docs/telemetry/opentelemetry/ to upgrade to OpenTelemetry", hasDeprecatedInstana),
-	NewRule("7.2.4", SeverityHigh, "Avoid using deprecated component telemetry/influx. Please visit https://www.krakend.io/docs/telemetry/influxdb/ to upgrade to OpenTelemetry", hasDeprecatedInflux),
 
 	// 7.3 Config field deprectaions
 	NewRule("7.3.1", SeverityMedium, "Avoid using 'private_key' and 'public_key' and use the 'keys' array.", hasDeprecatedTLSPrivPubKey),
