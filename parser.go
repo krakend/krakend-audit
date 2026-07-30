@@ -12,7 +12,6 @@ import (
 	httpcache "github.com/krakend/krakend-httpcache/v2"
 	luaproxy "github.com/krakend/krakend-lua/v2/proxy"
 	luarouter "github.com/krakend/krakend-lua/v2/router"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
 	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
 	rss "github.com/krakend/krakend-rss/v2"
 	xml "github.com/krakend/krakend-xml/v2"
@@ -336,48 +335,6 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 				res[3] = int(s)
 			}
 			components[c] = res
-
-		case opencensus.Namespace:
-			cfg, ok := v.(map[string]interface{})
-			if !ok {
-				continue
-			}
-
-			exp, ok := cfg["exporters"].(map[string]interface{})
-			if !ok {
-				continue
-			}
-
-			v1 := 0
-			if _, ok := exp["logger"]; ok {
-				v1 = 1
-			}
-			if _, ok := exp["zipkin"]; ok {
-				v1 += 2
-			}
-			if _, ok := exp["jaeger"]; ok {
-				v1 += 4
-			}
-			if _, ok := exp["influxdb"]; ok {
-				v1 += 8
-			}
-			if _, ok := exp["prometheus"]; ok {
-				v1 += 16
-			}
-			if _, ok := exp["xray"]; ok {
-				v1 += 32
-			}
-			if _, ok := exp["stackdriver"]; ok {
-				v1 += 64
-			}
-			if _, ok := exp["datadog"]; ok {
-				v1 += 128
-			}
-			if _, ok := exp["ocagent"]; ok {
-				v1 += 256
-			}
-
-			components[c] = []int{v1}
 
 		case ratelimit.Namespace:
 			cfg, ok := v.(map[string]interface{})

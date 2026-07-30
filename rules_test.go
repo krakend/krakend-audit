@@ -12,7 +12,6 @@ import (
 	jose "github.com/krakend/krakend-jose/v2"
 	logstash "github.com/krakend/krakend-logstash/v2"
 	metrics "github.com/krakend/krakend-metrics/v2"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
 	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
 	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
 	router "github.com/luraproject/lura/v2/router/gin"
@@ -179,9 +178,6 @@ func Test_hasTimeoutBiggerThan(t *testing.T) {
 }
 
 func Test_hasNoMetrics(t *testing.T) {
-	if hasNoMetrics(&Service{Components: Component{opencensus.Namespace: []int{1 << 17}}}) {
-		t.Error("false positive")
-	}
 	if hasNoMetrics(&Service{Components: Component{metrics.Namespace: []int{1 << 17}}}) {
 		t.Error("false positive")
 	}
@@ -201,9 +197,6 @@ func Test_hasNoMetrics(t *testing.T) {
 }
 
 func Test_hasSeveralTelemetryComponents(t *testing.T) {
-	if hasSeveralTelemetryComponents(&Service{Components: Component{opencensus.Namespace: []int{1 << 17}}}) {
-		t.Error("false positive")
-	}
 	if hasSeveralTelemetryComponents(&Service{Components: Component{metrics.Namespace: []int{1 << 17}}}) {
 		t.Error("false positive")
 	}
@@ -220,18 +213,15 @@ func Test_hasSeveralTelemetryComponents(t *testing.T) {
 		t.Error("false positive")
 	}
 
-	if !hasSeveralTelemetryComponents(&Service{Components: Component{
-		opencensus.Namespace: []int{1 << 17},
-		metrics.Namespace:    []int{1 << 17},
-	}}) {
-		t.Error("false negative")
-	}
+	// if !hasSeveralTelemetryComponents(&Service{Components: Component{
+	// 	opencensus.Namespace: []int{1 << 17},
+	// 	metrics.Namespace:    []int{1 << 17},
+	// }}) {
+	// 	t.Error("false negative")
+	// }
 }
 
 func Test_hasNoTracing(t *testing.T) {
-	if hasNoTracing(&Service{Components: Component{opencensus.Namespace: []int{1 << 17}}}) {
-		t.Error("false positive")
-	}
 	if hasNoTracing(&Service{Components: Component{"telemetry/newrelic": []int{1 << 17}}}) {
 		t.Error("false positive")
 	}
