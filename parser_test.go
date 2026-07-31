@@ -3,9 +3,9 @@ package audit
 import (
 	"testing"
 
-	"github.com/luraproject/lura/v2/config"
-	"github.com/luraproject/lura/v2/encoding"
-	router "github.com/luraproject/lura/v2/router/gin"
+	"github.com/luraproject/lura/v3/config"
+	"github.com/luraproject/lura/v3/encoding"
+	router "github.com/luraproject/lura/v3/router/gin"
 )
 
 func TestParse(t *testing.T) {

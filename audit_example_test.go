@@ -3,7 +3,7 @@ package audit
 import (
 	"fmt"
 
-	"github.com/luraproject/lura/v2/config"
+	"github.com/luraproject/lura/v3/config"
 )
 
 func ExampleAudit() {

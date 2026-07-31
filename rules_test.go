@@ -3,19 +3,19 @@ package audit
 import (
 	"testing"
 
-	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	cb "github.com/krakend/krakend-circuitbreaker/v3/gobreaker"
-	cors "github.com/krakend/krakend-cors/v2"
-	gelf "github.com/krakend/krakend-gelf/v2"
-	gologging "github.com/krakend/krakend-gologging/v2"
-	httpsecure "github.com/krakend/krakend-httpsecure/v2"
-	jose "github.com/krakend/krakend-jose/v2"
-	logstash "github.com/krakend/krakend-logstash/v2"
-	metrics "github.com/krakend/krakend-metrics/v2"
-	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
-	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
-	router "github.com/luraproject/lura/v2/router/gin"
-	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	botdetector "github.com/krakend/krakend-botdetector/v3/krakend"
+	cb "github.com/krakend/krakend-circuitbreaker/v4/gobreaker"
+	cors "github.com/krakend/krakend-cors/v3"
+	gelf "github.com/krakend/krakend-gelf/v3"
+	gologging "github.com/krakend/krakend-gologging/v3"
+	httpsecure "github.com/krakend/krakend-httpsecure/v3"
+	jose "github.com/krakend/krakend-jose/v3"
+	logstash "github.com/krakend/krakend-logstash/v3"
+	metrics "github.com/krakend/krakend-metrics/v3"
+	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
+	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
+	router "github.com/luraproject/lura/v3/router/gin"
+	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 func Test_hasBasicAuth(t *testing.T) {
