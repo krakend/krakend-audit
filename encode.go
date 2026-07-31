@@ -143,7 +143,7 @@ func applyAlias(s Service) Service {
 	return s
 }
 
-func (s *Service) normalize() {
+func (s *Service) normalize() { // skipcq: GO-R1005, GO-W1029
 	if s == nil {
 		return
 	}

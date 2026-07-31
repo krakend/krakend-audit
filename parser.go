@@ -25,7 +25,7 @@ import (
 )
 
 // Parse creates a Service capturing the details of the received configuration
-func Parse(cfg *config.ServiceConfig) Service {
+func Parse(cfg *config.ServiceConfig) Service { // skipcq: GO-R1005
 	v1 := 0
 
 	if cfg.Plugin != nil {
@@ -707,7 +707,7 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 	return components
 }
 
-func parseRouter(cfg config.ExtraConfig) int {
+func parseRouter(cfg config.ExtraConfig) int { // skipcq: GO-R1005
 	res := 0
 	v, ok := cfg["error_body"].(bool)
 	if ok && v {
