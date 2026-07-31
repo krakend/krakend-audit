@@ -1,7 +1,7 @@
 package audit
 
 import (
-	"github.com/luraproject/lura/v2/config"
+	"github.com/luraproject/lura/v3/config"
 )
 
 // Audit audits the received configuration and generates an AuditResult with all the Recommendations

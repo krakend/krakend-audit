@@ -7,25 +7,25 @@ import (
 
 	"github.com/go-viper/mapstructure/v2"
 
-	bf "github.com/krakend/bloomfilter/v2/krakend"
-	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	httpcache "github.com/krakend/krakend-httpcache/v2"
-	luaproxy "github.com/krakend/krakend-lua/v2/proxy"
-	luarouter "github.com/krakend/krakend-lua/v2/router"
-	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
-	rss "github.com/krakend/krakend-rss/v2"
-	xml "github.com/krakend/krakend-xml/v2"
-	"github.com/luraproject/lura/v2/config"
-	"github.com/luraproject/lura/v2/encoding"
-	"github.com/luraproject/lura/v2/proxy"
-	"github.com/luraproject/lura/v2/proxy/plugin"
-	router "github.com/luraproject/lura/v2/router/gin"
-	client "github.com/luraproject/lura/v2/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	bf "github.com/krakend/bloomfilter/v3/krakend"
+	botdetector "github.com/krakend/krakend-botdetector/v3/krakend"
+	httpcache "github.com/krakend/krakend-httpcache/v3"
+	luaproxy "github.com/krakend/krakend-lua/v3/proxy"
+	luarouter "github.com/krakend/krakend-lua/v3/router"
+	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
+	rss "github.com/krakend/krakend-rss/v3"
+	xml "github.com/krakend/krakend-xml/v3"
+	"github.com/luraproject/lura/v3/config"
+	"github.com/luraproject/lura/v3/encoding"
+	"github.com/luraproject/lura/v3/proxy"
+	"github.com/luraproject/lura/v3/proxy/plugin"
+	router "github.com/luraproject/lura/v3/router/gin"
+	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
+	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 // Parse creates a Service capturing the details of the received configuration
-func Parse(cfg *config.ServiceConfig) Service {
+func Parse(cfg *config.ServiceConfig) Service { // skipcq: GO-R1005
 	v1 := 0
 
 	if cfg.Plugin != nil {
@@ -707,7 +707,7 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 	return components
 }
 
-func parseRouter(cfg config.ExtraConfig) int {
+func parseRouter(cfg config.ExtraConfig) int { // skipcq: GO-R1005
 	res := 0
 	v, ok := cfg["error_body"].(bool)
 	if ok && v {
