@@ -164,3 +164,10 @@ const (
 	BackendComponentHTTPClientAllowInsecureConnections
 	BackendComponentHTTPClientCerts
 )
+
+const (
+	PluginServiceNamespace  = "plugin"
+	PluginHandlerNamespace  = "plugin/http-server"
+	PluginClientNamespace   = "plugin/http-client"
+	PluginModifierNamespace = "plugin/req-resp-modifier"
+)

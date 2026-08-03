@@ -19,10 +19,7 @@ import (
 	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
 	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
 	"github.com/luraproject/lura/v3/proxy"
-	"github.com/luraproject/lura/v3/proxy/plugin"
 	router "github.com/luraproject/lura/v3/router/gin"
-	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 // Marshal returns the encoded and compressed representation of the Service
@@ -57,13 +54,16 @@ func Unmarshal(b []byte, s *Service) error {
 }
 
 var componentAlias = map[string]string{
-	server.Namespace:      "a",
-	client.Namespace:      "b",
-	plugin.Namespace:      "c",
-	proxy.Namespace:       "d",
-	router.Namespace:      "e",
-	bf.Namespace:          "f",
-	botdetector.Namespace: "g",
+	"github_com/devopsfaith/krakend/transport/http/server/handler":  "a",
+	"github.com/devopsfaith/krakend/transport/http/client/executor": "b",
+	"github.com/devopsfaith/krakend/proxy/plugin":                   "c",
+	PluginHandlerNamespace:                      "aa",
+	PluginClientNamespace:                       "ba",
+	PluginModifierNamespace:                     "ca",
+	proxy.Namespace:                             "d",
+	router.Namespace:                            "e",
+	bf.Namespace:                                "f",
+	botdetector.Namespace:                       "g",
 	"github_com/devopsfaith/krakend-opencensus": "h",
 	ratelimit.Namespace:                         "i",
 	ratelimitProxy.Namespace:                    "j",
