@@ -6,24 +6,23 @@ import (
 	"encoding/gob"
 	"io"
 
-	bf "github.com/krakend/bloomfilter/v2/krakend"
-	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	gelf "github.com/krakend/krakend-gelf/v2"
-	gologging "github.com/krakend/krakend-gologging/v2"
-	httpcache "github.com/krakend/krakend-httpcache/v2"
-	httpsecure "github.com/krakend/krakend-httpsecure/v2"
-	jose "github.com/krakend/krakend-jose/v2"
-	logstash "github.com/krakend/krakend-logstash/v2"
-	luaproxy "github.com/krakend/krakend-lua/v2/proxy"
-	luarouter "github.com/krakend/krakend-lua/v2/router"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
-	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
-	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
-	"github.com/luraproject/lura/v2/proxy"
-	"github.com/luraproject/lura/v2/proxy/plugin"
-	router "github.com/luraproject/lura/v2/router/gin"
-	client "github.com/luraproject/lura/v2/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	bf "github.com/krakend/bloomfilter/v3/krakend"
+	botdetector "github.com/krakend/krakend-botdetector/v3/krakend"
+	gelf "github.com/krakend/krakend-gelf/v3"
+	gologging "github.com/krakend/krakend-gologging/v3"
+	httpcache "github.com/krakend/krakend-httpcache/v3"
+	httpsecure "github.com/krakend/krakend-httpsecure/v3"
+	jose "github.com/krakend/krakend-jose/v3"
+	logstash "github.com/krakend/krakend-logstash/v3"
+	luaproxy "github.com/krakend/krakend-lua/v3/proxy"
+	luarouter "github.com/krakend/krakend-lua/v3/router"
+	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
+	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
+	"github.com/luraproject/lura/v3/proxy"
+	"github.com/luraproject/lura/v3/proxy/plugin"
+	router "github.com/luraproject/lura/v3/router/gin"
+	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
+	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 // Marshal returns the encoded and compressed representation of the Service
@@ -58,45 +57,45 @@ func Unmarshal(b []byte, s *Service) error {
 }
 
 var componentAlias = map[string]string{
-	server.Namespace:                   "a",
-	client.Namespace:                   "b",
-	plugin.Namespace:                   "c",
-	proxy.Namespace:                    "d",
-	router.Namespace:                   "e",
-	bf.Namespace:                       "f",
-	botdetector.Namespace:              "g",
-	opencensus.Namespace:               "h",
-	ratelimit.Namespace:                "i",
-	ratelimitProxy.Namespace:           "j",
-	"telemetry/newrelic":               "k",
-	"telemetry/ganalytics":             "l",
-	"telemetry/instana":                "m",
-	jose.ValidatorNamespace:            "n",
-	jose.SignerNamespace:               "o",
-	"auth/api-keys":                    "p",
-	httpsecure.Namespace:               "q",
-	gologging.Namespace:                "r",
-	gelf.Namespace:                     "s",
-	logstash.Namespace:                 "t",
-	"backend/grpc":                     "u",
-	"auth/basic":                       "v",
-	"server/virtualhost":               "w",
-	"server/static-filesystem":         "x",
-	"backend/static-filesystem":        "y",
-	"backend/http/client":              "z",
-	"telemetry/moesif":                 "0",
-	"telemetry/opentelemetry":          "1",
-	"grpc":                             "2",
-	"modifier/response-body-generator": "3",
-	"validation/response-json-schema":  "4",
-	"websocket":                        "5",
-	"modifier/response-headers":        "6",
-	luaproxy.ProxyNamespace:            "7",
-	luaproxy.BackendNamespace:          "8",
-	luarouter.Namespace:                "9",
-	httpcache.Namespace:                "10",
-	"ai/llm":                           "11",
-	"ai/mcp":                           "12",
+	server.Namespace:      "a",
+	client.Namespace:      "b",
+	plugin.Namespace:      "c",
+	proxy.Namespace:       "d",
+	router.Namespace:      "e",
+	bf.Namespace:          "f",
+	botdetector.Namespace: "g",
+	"github_com/devopsfaith/krakend-opencensus": "h",
+	ratelimit.Namespace:                         "i",
+	ratelimitProxy.Namespace:                    "j",
+	"telemetry/newrelic":                        "k",
+	"telemetry/ganalytics":                      "l",
+	"telemetry/instana":                         "m",
+	jose.ValidatorNamespace:                     "n",
+	jose.SignerNamespace:                        "o",
+	"auth/api-keys":                             "p",
+	httpsecure.Namespace:                        "q",
+	gologging.Namespace:                         "r",
+	gelf.Namespace:                              "s",
+	logstash.Namespace:                          "t",
+	"backend/grpc":                              "u",
+	"auth/basic":                                "v",
+	"server/virtualhost":                        "w",
+	"server/static-filesystem":                  "x",
+	"backend/static-filesystem":                 "y",
+	"backend/http/client":                       "z",
+	"telemetry/moesif":                          "0",
+	"telemetry/opentelemetry":                   "1",
+	"grpc":                                      "2",
+	"modifier/response-body-generator":          "3",
+	"validation/response-json-schema":           "4",
+	"websocket":                                 "5",
+	"modifier/response-headers":                 "6",
+	luaproxy.ProxyNamespace:                     "7",
+	luaproxy.BackendNamespace:                   "8",
+	luarouter.Namespace:                         "9",
+	httpcache.Namespace:                         "10",
+	"ai/llm":                                    "11",
+	"ai/mcp":                                    "12",
 }
 
 func applyAlias(s Service) Service {
@@ -144,7 +143,7 @@ func applyAlias(s Service) Service {
 	return s
 }
 
-func (s *Service) normalize() {
+func (s *Service) normalize() { // skipcq: GO-R1005, GO-W1029
 	if s == nil {
 		return
 	}

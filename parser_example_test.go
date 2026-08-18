@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/luraproject/lura/v2/config"
+	"github.com/luraproject/lura/v3/config"
 )
 
 func ExampleParse() {
@@ -41,18 +41,18 @@ func ExampleParse() {
 	//             64
 	//           ],
 	//           "c": {
-	//             "github.com/devopsfaith/krakend-httpcache": [
-	//               0
-	//             ],
-	//             "github.com/devopsfaith/krakend-lua/proxy/backend": [
+	//             "modifier/lua-backend": [
 	//               2
+	//             ],
+	//             "qos/http-cache": [
+	//               0
 	//             ]
 	//           }
 	//         }
 	//       ],
 	//       "c": {
-	//         "github.com/devopsfaith/krakend-jose/validator": [],
-	//         "github.com/devopsfaith/krakend-lua/proxy": [
+	//         "auth/validator": [],
+	//         "modifier/lua-proxy": [
 	//           3
 	//         ],
 	//         "modifier/response-body": [
@@ -146,7 +146,7 @@ func ExampleParse() {
 	//             64
 	//           ],
 	//           "c": {
-	//             "github.com/devopsfaith/krakend-httpcache": [
+	//             "qos/http-cache": [
 	//               7
 	//             ]
 	//           }
@@ -372,7 +372,7 @@ func ExampleParse() {
 	//         }
 	//       ],
 	//       "c": {
-	//         "github.com/devopsfaith/krakend/proxy": [
+	//         "proxy": [
 	//           1
 	//         ]
 	//       }
@@ -384,10 +384,7 @@ func ExampleParse() {
 	//       3
 	//     ],
 	//     "auth/api-keys": [],
-	//     "github.com/devopsfaith/krakend-lua/router": [
-	//       1
-	//     ],
-	//     "github_com/devopsfaith/bloomfilter": [
+	//     "auth/revoker": [
 	//       1,
 	//       2,
 	//       0
@@ -395,17 +392,19 @@ func ExampleParse() {
 	//     "github_com/devopsfaith/krakend/transport/http/server/handler": [
 	//       4
 	//     ],
-	//     "github_com/letgoapp/krakend-influx": [],
-	//     "github_com/luraproject/lura/router/gin": [
-	//       262144
-	//     ],
 	//     "grpc": [
+	//       1
+	//     ],
+	//     "modifier/lua-endpoint": [
 	//       1
 	//     ],
 	//     "modifier/response-headers": [
 	//       15
 	//     ],
 	//     "qos/ratelimit/service": [],
+	//     "router": [
+	//       262144
+	//     ],
 	//     "telemetry/opentelemetry": [
 	//       50,
 	//       100,
@@ -457,7 +456,7 @@ func ExampleParse_withRevokerServer() {
 	//     }
 	//   ],
 	//   "c": {
-	//     "github_com/devopsfaith/bloomfilter": [
+	//     "auth/revoker": [
 	//       1,
 	//       1,
 	//       1

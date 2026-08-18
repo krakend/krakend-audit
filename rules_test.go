@@ -3,20 +3,19 @@ package audit
 import (
 	"testing"
 
-	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	cb "github.com/krakend/krakend-circuitbreaker/v3/gobreaker"
-	cors "github.com/krakend/krakend-cors/v2"
-	gelf "github.com/krakend/krakend-gelf/v2"
-	gologging "github.com/krakend/krakend-gologging/v2"
-	httpsecure "github.com/krakend/krakend-httpsecure/v2"
-	jose "github.com/krakend/krakend-jose/v2"
-	logstash "github.com/krakend/krakend-logstash/v2"
-	metrics "github.com/krakend/krakend-metrics/v2"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
-	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
-	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
-	router "github.com/luraproject/lura/v2/router/gin"
-	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	botdetector "github.com/krakend/krakend-botdetector/v3/krakend"
+	cb "github.com/krakend/krakend-circuitbreaker/v4/gobreaker"
+	cors "github.com/krakend/krakend-cors/v3"
+	gelf "github.com/krakend/krakend-gelf/v3"
+	gologging "github.com/krakend/krakend-gologging/v3"
+	httpsecure "github.com/krakend/krakend-httpsecure/v3"
+	jose "github.com/krakend/krakend-jose/v3"
+	logstash "github.com/krakend/krakend-logstash/v3"
+	metrics "github.com/krakend/krakend-metrics/v3"
+	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
+	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
+	router "github.com/luraproject/lura/v3/router/gin"
+	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 func Test_hasBasicAuth(t *testing.T) {
@@ -179,9 +178,6 @@ func Test_hasTimeoutBiggerThan(t *testing.T) {
 }
 
 func Test_hasNoMetrics(t *testing.T) {
-	if hasNoMetrics(&Service{Components: Component{opencensus.Namespace: []int{1 << 17}}}) {
-		t.Error("false positive")
-	}
 	if hasNoMetrics(&Service{Components: Component{metrics.Namespace: []int{1 << 17}}}) {
 		t.Error("false positive")
 	}
@@ -201,9 +197,6 @@ func Test_hasNoMetrics(t *testing.T) {
 }
 
 func Test_hasSeveralTelemetryComponents(t *testing.T) {
-	if hasSeveralTelemetryComponents(&Service{Components: Component{opencensus.Namespace: []int{1 << 17}}}) {
-		t.Error("false positive")
-	}
 	if hasSeveralTelemetryComponents(&Service{Components: Component{metrics.Namespace: []int{1 << 17}}}) {
 		t.Error("false positive")
 	}
@@ -220,18 +213,15 @@ func Test_hasSeveralTelemetryComponents(t *testing.T) {
 		t.Error("false positive")
 	}
 
-	if !hasSeveralTelemetryComponents(&Service{Components: Component{
-		opencensus.Namespace: []int{1 << 17},
-		metrics.Namespace:    []int{1 << 17},
-	}}) {
-		t.Error("false negative")
-	}
+	// if !hasSeveralTelemetryComponents(&Service{Components: Component{
+	// 	opencensus.Namespace: []int{1 << 17},
+	// 	metrics.Namespace:    []int{1 << 17},
+	// }}) {
+	// 	t.Error("false negative")
+	// }
 }
 
 func Test_hasNoTracing(t *testing.T) {
-	if hasNoTracing(&Service{Components: Component{opencensus.Namespace: []int{1 << 17}}}) {
-		t.Error("false positive")
-	}
 	if hasNoTracing(&Service{Components: Component{"telemetry/newrelic": []int{1 << 17}}}) {
 		t.Error("false positive")
 	}

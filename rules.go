@@ -1,25 +1,23 @@
 package audit
 
 import (
-	botdetector "github.com/krakend/krakend-botdetector/v2/krakend"
-	cb "github.com/krakend/krakend-circuitbreaker/v3/gobreaker"
-	cors "github.com/krakend/krakend-cors/v2"
-	gelf "github.com/krakend/krakend-gelf/v2"
-	gologging "github.com/krakend/krakend-gologging/v2"
-	httpcache "github.com/krakend/krakend-httpcache/v2"
-	httpsecure "github.com/krakend/krakend-httpsecure/v2"
-	influx "github.com/krakend/krakend-influx/v2"
-	jose "github.com/krakend/krakend-jose/v2"
-	logstash "github.com/krakend/krakend-logstash/v2"
-	metrics "github.com/krakend/krakend-metrics/v2"
-	opencensus "github.com/krakend/krakend-opencensus/v2"
-	ratelimitProxy "github.com/krakend/krakend-ratelimit/v3/proxy"
-	ratelimit "github.com/krakend/krakend-ratelimit/v3/router"
-	"github.com/luraproject/lura/v2/proxy"
-	"github.com/luraproject/lura/v2/proxy/plugin"
-	router "github.com/luraproject/lura/v2/router/gin"
-	client "github.com/luraproject/lura/v2/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v2/transport/http/server/plugin"
+	botdetector "github.com/krakend/krakend-botdetector/v3/krakend"
+	cb "github.com/krakend/krakend-circuitbreaker/v4/gobreaker"
+	cors "github.com/krakend/krakend-cors/v3"
+	gelf "github.com/krakend/krakend-gelf/v3"
+	gologging "github.com/krakend/krakend-gologging/v3"
+	httpcache "github.com/krakend/krakend-httpcache/v3"
+	httpsecure "github.com/krakend/krakend-httpsecure/v3"
+	jose "github.com/krakend/krakend-jose/v3"
+	logstash "github.com/krakend/krakend-logstash/v3"
+	metrics "github.com/krakend/krakend-metrics/v3"
+	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
+	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
+	"github.com/luraproject/lura/v3/proxy"
+	"github.com/luraproject/lura/v3/proxy/plugin"
+	router "github.com/luraproject/lura/v3/router/gin"
+	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
+	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 func hasBit(x, y int) bool {
@@ -299,7 +297,6 @@ func hasTimeoutBiggerThan(d int) func(*Service) bool {
 
 func hasNoMetrics(s *Service) bool {
 	for _, k := range []string{
-		opencensus.Namespace,
 		metrics.Namespace,
 		"telemetry/newrelic",
 		"telemetry/ganalytics",
@@ -315,7 +312,6 @@ func hasNoMetrics(s *Service) bool {
 func hasSeveralTelemetryComponents(s *Service) bool {
 	tot := 0
 	for _, k := range []string{
-		opencensus.Namespace,
 		metrics.Namespace,
 		"telemetry/newrelic",
 		"telemetry/ganalytics",
@@ -335,7 +331,8 @@ func hasSeveralTelemetryComponents(s *Service) bool {
 }
 
 func hasNoTracing(s *Service) bool {
-	_, ok1 := s.Components[opencensus.Namespace]
+	// this replaces old check for opencensus
+	ok1 := false
 	_, ok2 := s.Components["telemetry/newrelic"]
 	_, ok3 := s.Components["telemetry/instana"]
 
@@ -356,16 +353,6 @@ func hasDeprecatedInstana(s *Service) bool {
 
 func hasDeprecatedGanalytics(s *Service) bool {
 	_, ok := s.Components["telemetry/ganalytics"]
-	return ok
-}
-
-func hasDeprecatedOpenCensus(s *Service) bool {
-	_, ok := s.Components[opencensus.Namespace]
-	return ok
-}
-
-func hasDeprecatedInflux(s *Service) bool {
-	_, ok := s.Components[influx.Namespace]
 	return ok
 }
 
