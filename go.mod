@@ -19,7 +19,7 @@ require (
 	github.com/krakend/krakend-ratelimit/v4 v4.0.0-20260730143053-a3ce2811a646
 	github.com/krakend/krakend-rss/v3 v3.0.0-20260730141845-a9ca05b1a928
 	github.com/krakend/krakend-xml/v3 v3.0.0-20260730105932-cd80994f0518
-	github.com/luraproject/lura/v3 v3.0.0-20260729150645-8c91935f50b2
+	github.com/luraproject/lura/v3 v3.0.0-20260902072206-0538f09374cc
 )
 
 require (
