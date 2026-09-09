@@ -18,17 +18,14 @@ import (
 	"github.com/luraproject/lura/v3/config"
 	"github.com/luraproject/lura/v3/encoding"
 	"github.com/luraproject/lura/v3/proxy"
-	"github.com/luraproject/lura/v3/proxy/plugin"
 	router "github.com/luraproject/lura/v3/router/gin"
-	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 // Parse creates a Service capturing the details of the received configuration
 func Parse(cfg *config.ServiceConfig) Service { // skipcq: GO-R1005
 	v1 := 0
 
-	if cfg.Plugin != nil {
+	if _, ok := cfg.ExtraConfig[PluginServiceNamespace]; ok {
 		v1 = addBit(v1, ServicePlugin)
 	}
 
@@ -225,7 +222,7 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 	components := Component{}
 	for c, v := range cfg {
 		switch c {
-		case server.Namespace:
+		case PluginHandlerNamespace:
 			cfg, ok := v.(map[string]interface{})
 			if !ok {
 				continue
@@ -249,7 +246,7 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 				continue
 			}
 
-		case client.Namespace:
+		case PluginClientNamespace:
 			cfg, ok := v.(map[string]interface{})
 			if !ok {
 				continue
@@ -261,7 +258,7 @@ func parseComponents(cfg config.ExtraConfig) Component { // skipcq: GO-R1005
 			}
 			components[c] = []int{parseClientPlugin(n)}
 
-		case plugin.Namespace:
+		case PluginModifierNamespace:
 			cfg, ok := v.(map[string]interface{})
 			if !ok {
 				continue

@@ -44,7 +44,7 @@
       "client_mac_rate": 5,
       "startegy": "ip"
     },
-    "github_com/devopsfaith/krakend/transport/http/server/handler": {
+    "plugin/http-server": {
       "name": [
         "basic-auth"
       ]
@@ -271,15 +271,13 @@
       "input_headers": [
         "*"
       ],
-      "extra_config": {
-        "github.com/devopsfaith/krakend/transport/http/client/executor": {
-          "name": "no-redirect"
-        }
-      },
       "backend": [
         {
           "url_pattern": "/",
           "extra_config": {
+            "plugin/http-client": {
+              "name": "no-redirect"
+            },
             "backend/http/client": {
               "client_tls": {
                 "allow_insecure_connections": true

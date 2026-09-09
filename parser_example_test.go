@@ -88,15 +88,14 @@ func ExampleParse() {
 	//           "c": {
 	//             "backend/http/client": [
 	//               3
+	//             ],
+	//             "plugin/http-client": [
+	//               1
 	//             ]
 	//           }
 	//         }
 	//       ],
-	//       "c": {
-	//         "github.com/devopsfaith/krakend/transport/http/client/executor": [
-	//           1
-	//         ]
-	//       }
+	//       "c": {}
 	//     },
 	//     {
 	//       "d": [
@@ -389,9 +388,6 @@ func ExampleParse() {
 	//       2,
 	//       0
 	//     ],
-	//     "github_com/devopsfaith/krakend/transport/http/server/handler": [
-	//       4
-	//     ],
 	//     "grpc": [
 	//       1
 	//     ],
@@ -400,6 +396,9 @@ func ExampleParse() {
 	//     ],
 	//     "modifier/response-headers": [
 	//       15
+	//     ],
+	//     "plugin/http-server": [
+	//       4
 	//     ],
 	//     "qos/ratelimit/service": [],
 	//     "router": [
