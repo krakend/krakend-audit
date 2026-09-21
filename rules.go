@@ -14,10 +14,7 @@ import (
 	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
 	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
 	"github.com/luraproject/lura/v3/proxy"
-	"github.com/luraproject/lura/v3/proxy/plugin"
 	router "github.com/luraproject/lura/v3/router/gin"
-	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 func hasBit(x, y int) bool {
@@ -26,7 +23,7 @@ func hasBit(x, y int) bool {
 
 func hasBasicAuth(s *Service) bool {
 	// check basic auth in plugin
-	if len(s.Components[server.Namespace]) > 0 && hasBit(s.Components[server.Namespace][0], parseServerPlugin("basic-auth")) {
+	if len(s.Components[PluginHandlerNamespace]) > 0 && hasBit(s.Components[PluginHandlerNamespace][0], parseServerPlugin("basic-auth")) {
 		// old plugin basic auth
 		return true
 	}
@@ -51,7 +48,7 @@ func hasTelemetryMissingName(_ *Service) bool {
 
 func hasDeprecatedServerPlugin(pluginName string) func(s *Service) bool {
 	return func(s *Service) bool {
-		serverPlugins, ok := s.Components[server.Namespace]
+		serverPlugins, ok := s.Components[PluginHandlerNamespace]
 		if !ok {
 			return false
 		}
@@ -69,9 +66,11 @@ func hasDeprecatedClientPlugin(pluginName string) func(s *Service) bool {
 	return func(s *Service) bool {
 		compID := parseClientPlugin(pluginName)
 		for _, ep := range s.Endpoints {
-			comp, ok := ep.Components[client.Namespace]
-			if ok && len(comp) > 0 && comp[0] == compID {
-				return true
+			for _, b := range ep.Backends {
+				comp, ok := b.Components[PluginClientNamespace]
+				if ok && len(comp) > 0 && comp[0] == compID {
+					return true
+				}
 			}
 		}
 		return false
@@ -82,12 +81,12 @@ func hasDeprecatedReqRespPlugin(pluginName string) func(s *Service) bool {
 	return func(s *Service) bool {
 		id := parseRespReqPlugin(pluginName)
 		for _, ep := range s.Endpoints {
-			comp, ok := ep.Components[plugin.Namespace]
+			comp, ok := ep.Components[PluginModifierNamespace]
 			if ok && hasBit(comp[0], id) {
 				return true
 			}
 			for _, b := range ep.Backends {
-				comp, ok := b.Components[plugin.Namespace]
+				comp, ok := b.Components[PluginModifierNamespace]
 				if ok && hasBit(comp[0], id) {
 					return true
 				}
@@ -255,7 +254,7 @@ func hasNoRatelimit(s *Service) bool {
 		return false
 	}
 
-	serverPlugins, ok := s.Components[server.Namespace]
+	serverPlugins, ok := s.Components[PluginHandlerNamespace]
 	if ok && len(serverPlugins) > 0 {
 		pluginsBitset := serverPlugins[0]
 		redisRateLimitBit := parseServerPlugin("redis-ratelimit")

@@ -15,11 +15,10 @@ import (
 	ratelimitProxy "github.com/krakend/krakend-ratelimit/v4/proxy"
 	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
 	router "github.com/luraproject/lura/v3/router/gin"
-	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 func Test_hasBasicAuth(t *testing.T) {
-	if !hasBasicAuth(&Service{Components: Component{server.Namespace: []int{4}}}) {
+	if !hasBasicAuth(&Service{Components: Component{PluginHandlerNamespace: []int{4}}}) {
 		t.Error("false negative")
 	}
 
@@ -27,7 +26,7 @@ func Test_hasBasicAuth(t *testing.T) {
 		t.Error("false positive")
 	}
 
-	if hasBasicAuth(&Service{Components: Component{server.Namespace: []int{0}}}) {
+	if hasBasicAuth(&Service{Components: Component{PluginHandlerNamespace: []int{0}}}) {
 		t.Error("false positive")
 	}
 }

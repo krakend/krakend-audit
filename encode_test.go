@@ -12,10 +12,7 @@ import (
 	ratelimit "github.com/krakend/krakend-ratelimit/v4/router"
 	"github.com/luraproject/lura/v3/config"
 	"github.com/luraproject/lura/v3/proxy"
-	"github.com/luraproject/lura/v3/proxy/plugin"
 	router "github.com/luraproject/lura/v3/router/gin"
-	client "github.com/luraproject/lura/v3/transport/http/client/plugin"
-	server "github.com/luraproject/lura/v3/transport/http/server/plugin"
 )
 
 func intn(k int) int {
@@ -50,11 +47,14 @@ func generateCfg() *config.ServiceConfig {
 		SequentialStart: true,
 		Endpoints:       []*config.EndpointConfig{},
 		ExtraConfig: config.ExtraConfig{
-			server.Namespace:      map[string]interface{}{},
-			router.Namespace:      map[string]interface{}{},
-			bf.Namespace:          map[string]interface{}{},
-			botdetector.Namespace: map[string]interface{}{},
-			ratelimit.Namespace:   map[string]interface{}{},
+			PluginHandlerNamespace: map[string]interface{}{},
+			router.Namespace:       map[string]interface{}{},
+			bf.Namespace:           map[string]interface{}{},
+			botdetector.Namespace:  map[string]interface{}{},
+			ratelimit.Namespace:    map[string]interface{}{},
+			PluginServiceNamespace: map[string]interface{}{
+				"folder": ".",
+			},
 		},
 		AsyncAgents: []*config.AsyncAgent{
 			{
@@ -82,9 +82,6 @@ func generateCfg() *config.ServiceConfig {
 				},
 			},
 		},
-		Plugin: &config.Plugin{
-			Folder: ".",
-		},
 		TLS: &config.TLS{
 			PublicKey:  "./cert.pub",
 			PrivateKey: "./cert.key",
@@ -102,7 +99,7 @@ func generateCfg() *config.ServiceConfig {
 				ExtraConfig: config.ExtraConfig{
 					fmt.Sprintf("component%3d", intn(100)): true,
 					fmt.Sprintf("component%3d", intn(100)): true,
-					plugin.Namespace:                       map[string]interface{}{},
+					PluginModifierNamespace:                map[string]interface{}{},
 					proxy.Namespace:                        map[string]interface{}{},
 				},
 			}
@@ -116,7 +113,7 @@ func generateCfg() *config.ServiceConfig {
 					ExtraConfig: config.ExtraConfig{
 						fmt.Sprintf("component%3d", intn(100)): true,
 						fmt.Sprintf("component%3d", intn(100)): true,
-						client.Namespace:                       map[string]interface{}{},
+						PluginClientNamespace:                  map[string]interface{}{},
 					},
 				})
 			}
@@ -135,14 +132,14 @@ func generateCfg() *config.ServiceConfig {
 						Encoding:   "no-op",
 						ExtraConfig: config.ExtraConfig{
 							fmt.Sprintf("component%3d", intn(100)): true,
-							client.Namespace:                       map[string]interface{}{},
+							PluginClientNamespace:                  map[string]interface{}{},
 						},
 					},
 				},
 				ExtraConfig: config.ExtraConfig{
 					fmt.Sprintf("component%3d", intn(100)): true,
 					fmt.Sprintf("component%3d", intn(100)): true,
-					plugin.Namespace:                       map[string]interface{}{},
+					PluginModifierNamespace:                map[string]interface{}{},
 					proxy.Namespace:                        map[string]interface{}{},
 				},
 			}
