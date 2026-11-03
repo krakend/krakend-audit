@@ -12,7 +12,7 @@ require (
 	github.com/krakend/krakend-gologging/v3 v3.0.0-20260730160554-30abc7118c3c
 	github.com/krakend/krakend-httpcache/v3 v3.0.0-20260730190833-a6ec1e16f90a
 	github.com/krakend/krakend-httpsecure/v3 v3.0.0-20260730185919-03390d6bd5e8
-	github.com/krakend/krakend-jose/v3 v3.0.0-20260730185228-6aa13f11f17b
+	github.com/krakend/krakend-jose/v3 v3.0.3
 	github.com/krakend/krakend-logstash/v3 v3.0.0-20260730182207-3479d8d7f9c5
 	github.com/krakend/krakend-lua/v3 v3.0.0-20260730162142-8034a49214ce
 	github.com/krakend/krakend-metrics/v3 v3.0.0-20260730155513-48daa58645b2
@@ -68,8 +68,7 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.12 // indirect
 	github.com/gin-contrib/sse v1.1.0 // indirect
 	github.com/gin-gonic/gin v1.12.0 // indirect
-	github.com/go-jose/go-jose/v3 v3.0.5 // indirect
-	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.6 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
@@ -99,7 +98,7 @@ require (
 	github.com/krakend/binder v0.0.0-20250826131726-e91a8a754ef8 // indirect
 	github.com/krakend/dotnotation v0.2.0 // indirect
 	github.com/krakend/flatmap v1.2.0 // indirect
-	github.com/krakend/go-auth0/v2 v2.0.1 // indirect
+	github.com/krakend/go-auth0/v2 v2.0.5 // indirect
 	github.com/krakend/httpcache v1.1.0 // indirect
 	github.com/krakend/lru v0.0.0-20250121172718-0e3a6eab620d // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
